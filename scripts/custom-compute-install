@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Cresset requires mesa-libGLU on controller AND compute nodes 
 yum install -y libGLU

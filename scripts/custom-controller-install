@@ -1,4 +1,15 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Cresset requires mesa-libGLU on controller AND compute nodes 
 yum install -y libGLU
+
+# Retrieve Flare and the CEBroker
+CRESSET_SLUG=" https://www.cresset-group.com/downloads"
+
+curl --verbose --location --output /tmp/flare.tar.xz ${CRESSET_SLUG}/flare.tar.xz
+curl --verbose --location --output /tmp/CEB2.tar.xz ${CRESSET_SLUG}/CEB2.tar.xz
+
+cd /apps/
+tar xJf /tmp/flare.tar.xz
+tar xJf /tmp/CEB2.tar.xz
+
