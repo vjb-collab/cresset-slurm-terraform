@@ -117,6 +117,7 @@ resource "google_compute_instance" "controller_node" {
     slurmsync                 = file("${path.module}/../../../scripts/slurmsync.py")
     util-script               = file("${path.module}/../../../scripts/util.py")
     start-SLURM-engine        = file("${path.module}/../../../scripts/start-SLURM-engine.sh")
+    start-CEBroker            = file("${path.module}/../../../scripts/start-CEBroker.sh")
   }
 }
 
@@ -215,5 +216,6 @@ resource "google_compute_instance_from_template" "controller_node" {
     slurmsync                 = file("${path.module}/../../../scripts/slurmsync.py")
     util-script               = file("${path.module}/../../../scripts/util.py")
     start-SLURM-engine        = file("${path.module}/../../../scripts/start-SLURM-engine.sh")
+    start-CEBroker            = file("${path.module}/../../../scripts/start-CEBroker.sh")
   }
 }

@@ -25,14 +25,14 @@ EXISTING_JOB_ID=$7
 ##### EDIT THE SETTINGS BELOW FOR YOUR SYSTEM ####
 
 # The SLURM options to use for single/multicore jobs
-SINGLECORE_OPTIONS="-p cpu.p"       # Use default queue
+SINGLECORE_OPTIONS=       # Use default queue
 
 # Specify options/queue for multi-core CPU jobs
 #MULTICORE_OPTIONS="-p multicore.q"
 MULTICORE_OPTIONS=
 
 # Specify options/queue for GPU jobs
-GPU_OPTIONS="-p gpu.q --gres=gpu:1"
+GPU_OPTIONS="-p gpu.p --gres=gpu:1"
 
 # Location of the FieldEngine binary to run. We'll assume you have Flare
 # installed

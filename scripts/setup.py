@@ -386,7 +386,9 @@ def install_meta_files():
         ('startup.sh', 'startup-script'),
         ('custom-compute-install', 'custom-compute-install'),
         ('custom-controller-install', 'custom-controller-install'),
-        ('start-SLURM-engine.sh', 'start-SLURM-engine'),        
+        ('start-SLURM-engine.sh', 'start-SLURM-engine'),  
+        ('start-CEBroker.sh', 'start-CEBroker' )
+              
     ]
 
     def install_metafile(filename, metaname):
@@ -660,8 +662,10 @@ def setup_controller():
 
     try:
         slurm_script=str(dirs.scripts/'start-SLURM-engine.sh')
+        cebroker_script=str(dirs.scripts/'start-CEBroker.sh')
         util.run(str(dirs.scripts/'custom-controller-install'))
         util.run(f"cp {slurm_script} /apps/cresset/")
+        util.run(f"cp {cebroker_script} /apps/cresset/")
     except Exception:
         # Ignore blank files with no shell magic.
         pass
