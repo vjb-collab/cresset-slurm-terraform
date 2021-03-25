@@ -140,7 +140,7 @@ SSSSSSSSSSSS    SSS    SSSSSSSSSSSSS    SSSS        SSSS     SSSS     SSSS
 def start_motd():
     """ advise in motd that slurm is currently configuring """
     msg = MOTD_HEADER + """
-*** Slurm is currently being configured in the background. ***
+*** Slurm & Flare are currently being configured in the background. ***
 """
     Path('/etc/motd').write_text(msg)
 # END start_motd()
@@ -153,7 +153,7 @@ def end_motd(broadcast=True):
     if not broadcast:
         return
 
-    util.run("wall -n '*** Slurm {} setup complete ***'"
+    util.run("wall -n '*** Slurm {} & Flare setup complete ***'"
              .format(cfg.instance_type))
     if cfg.instance_type != 'controller':
         util.run("""wall -n '
@@ -386,6 +386,7 @@ def install_meta_files():
         ('startup.sh', 'startup-script'),
         ('custom-compute-install', 'custom-compute-install'),
         ('custom-controller-install', 'custom-controller-install'),
+        ('start-SLURM-engine.sh', 'start-SLURM-engine'),        
     ]
 
     def install_metafile(filename, metaname):
@@ -658,7 +659,9 @@ def setup_controller():
     mount_fstab()
 
     try:
+        slurm_script=str(dirs.scripts/'start-SLURM-engine.sh')
         util.run(str(dirs.scripts/'custom-controller-install'))
+        util.run(f"cp {slurm_script} /apps/cresset/")
     except Exception:
         # Ignore blank files with no shell magic.
         pass

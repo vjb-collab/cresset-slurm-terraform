@@ -12,4 +12,4 @@ curl --verbose --location --output /tmp/CEB2.tar.xz ${CRESSET_SLUG}/CEB2.tar.xz
 cd /apps/
 tar xJf /tmp/flare.tar.xz
 tar xJf /tmp/CEB2.tar.xz
-
+mkdir -p cresset/logs/

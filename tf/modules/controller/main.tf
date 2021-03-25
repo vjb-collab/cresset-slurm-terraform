@@ -116,6 +116,7 @@ resource "google_compute_instance" "controller_node" {
     slurmdbd_conf_tpl         = file("${path.module}/../../../etc/slurmdbd.conf.tpl")
     slurmsync                 = file("${path.module}/../../../scripts/slurmsync.py")
     util-script               = file("${path.module}/../../../scripts/util.py")
+    start-SLURM-engine        = file("${path.module}/../../../scripts/start-SLURM-engine.sh")
   }
 }
 
@@ -213,5 +214,6 @@ resource "google_compute_instance_from_template" "controller_node" {
     slurmdbd_conf_tpl         = file("${path.module}/../../../etc/slurmdbd.conf.tpl")
     slurmsync                 = file("${path.module}/../../../scripts/slurmsync.py")
     util-script               = file("${path.module}/../../../scripts/util.py")
+    start-SLURM-engine        = file("${path.module}/../../../scripts/start-SLURM-engine.sh")
   }
 }
