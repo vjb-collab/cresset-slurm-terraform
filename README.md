@@ -18,15 +18,19 @@ Then deploy the cluster
  
  While the cluster is deploying, you will see this message on the controller node when you ssh into it:
  
- *** Slurm & Flare are currently being configured in the background. ***
+ *** *Slurm & Flare are currently being configured in the background* ***
  
+ If you stay logged into the controller during the deployment, you will see a broadcast message when's it's completed like this: 
  
+ *** *Slurm controller & Flare setup complete* ***
+ 
+ Note: If you ssh into the controller and you do not see the message (just the Slurm and Flare logos), then the installation has already completed.
  
  After the cluster has been setup and configured, put the license in place:  
  
  ```gcloud compute scp  <LICENSEFILE>  cresset-flare-controller:~/. --zone=<zone>```
  
- The rest of the configuration takes place on the controller node. On the controller node:
+ The rest of the configuration takes place on the _controller_ node. On the controller node:
  
  ```sudo mv <LICENSEFILE> /apps/cresset/licenses/.```
  
