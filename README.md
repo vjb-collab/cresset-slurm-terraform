@@ -10,7 +10,9 @@ From Cloud Shell:
 
 ```terraform init```
 
-```vi basic.tfvars```
+Before deploying the cluster, you can modify the deloyment configuration by modifying values in the *basic.tfvars* file. 
+
+Then deploy the cluster
 
  ```make apply```
  
