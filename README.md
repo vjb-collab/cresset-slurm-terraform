@@ -24,7 +24,7 @@ Then deploy the cluster
  
  *** *Slurm controller & Flare setup complete* ***
  
- Note: If you ssh into the controller and you do not see the message (just the Slurm and Flare logos), then the installation has already completed.
+ _Note: If you ssh into the controller and you do not see the message (i.e., you just see the Slurm and Flare logos), then the installation has completed._
  
  After the cluster has been setup and configured, put the license in place:  
  
