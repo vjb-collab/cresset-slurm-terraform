@@ -15,5 +15,5 @@ tar xJf /tmp/CEB2.tar.xz
 mkdir -p cresset/logs/
 
 #adduser cresset
-chown -R slurm /apps/cresset/
-chgrp -R slurm /apps/cresset/
+#chown -R slurm /apps/cresset/
+#chgrp -R slurm /apps/cresset/
