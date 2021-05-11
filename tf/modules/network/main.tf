@@ -77,7 +77,7 @@ resource "google_compute_firewall" "cluster_ssh_firewall" {
   }
 }
 
-resource "google_compute_firewall" "cluster_cresset_firewall" {
+resource "google_compute_firewall" "cluster_cresset_firewall_field_engine" {
   count = ((var.shared_vpc_host_project == null &&
     length(google_compute_network.cluster_network) > 0 &&
     (var.disable_login_public_ips == false ||
@@ -86,13 +86,32 @@ resource "google_compute_firewall" "cluster_cresset_firewall" {
     ? 1
   : 0)
 
-  name          = "${var.cluster_name}-allow-cresset"
+  name          = "${var.cluster_name}-allow-cresset-field-engine"
+  network       = google_compute_network.cluster_network[0].name
+  source_ranges = ["10.0.0.0/8"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["9001"]
+  }
+}
+
+resource "google_compute_firewall" "cluster_cresset_firewall_flare_client" {
+  count = ((var.shared_vpc_host_project == null &&
+    length(google_compute_network.cluster_network) > 0 &&
+    (var.disable_login_public_ips == false ||
+      var.disable_controller_public_ips == false ||
+    var.disable_compute_public_ips == false))
+    ? 1
+  : 0)
+
+  name          = "${var.cluster_name}-allow-cresset-client"
   network       = google_compute_network.cluster_network[0].name
   source_ranges = ["0.0.0.0/0"]
 
   allow {
     protocol = "tcp"
-    ports    = ["9000","9001"]
+    ports    = ["9000"]
   }
 }
 

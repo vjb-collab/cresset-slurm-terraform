@@ -1,5 +1,5 @@
 cluster_name = "cresset-flare"
-project      = "hpc-cresset"
+project      = "tactical-hope-313419"
 zone         = "us-central1-b"
 
 # network_name            = "<existing network name>"
